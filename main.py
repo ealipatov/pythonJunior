@@ -1,18 +1,7 @@
 # 1. ДЗ. Вывести на экран произведение чисел от -10 до 7
 
-# так как в условии задания ничего не говорится про умножение на 0 (а 0 это тоже число),
-# то результат для диапазона чисел, где одно отрицательное а второе положительное, всегда будет равен нулю
-
 number_N = -10
 number_M = 7
-
-
-def number_operation_with_zero(n, m):
-    result = 1
-    while n <= m:
-        result *= n
-        n += 1
-    return result
 
 
 def number_operation_without_zero(n, m):
@@ -27,12 +16,9 @@ def number_operation_without_zero(n, m):
 
 
 def print_result_with_zero():
-    if number_N < number_M:
-        print(f"Произведение чисел от {number_N} до {number_M} включительно (включая ноль): "
-              f"{number_operation_with_zero(number_N, number_M)}")
-    else:
-        print(f"Произведение чисел от {number_M} до {number_N} включительно: "
-              f"{number_operation_with_zero(number_M, number_N)}")
+    print("Произведение чисел из диапазона, где начальный элемент отрицательное число, а конечный - положительное"
+          " или наоборот, всегда будет равно нулю")
+
 
 def print_result_without_zero():
     if number_N < number_M:
