@@ -1,68 +1,53 @@
+# 1. ДЗ. Вывести на экран произведение чисел от -10 до 7
 
-# 1. Необходимо вывести на экран числа от 5 до 1
+# так как в условии задания ничего не говорится про умножение на 0 (а 0 это тоже число),
+# то результат для диапазона чисел, где одно отрицательное а второе положительное, всегда будет равен нулю
 
-# counter = 5
-# while counter >=1:
-#     print(counter)
-#     counter -= 1
-#
-# list_number = range(5, 0, -1) #5- началоб, 0 - конец, -1 - шаг
-# print(list(list_number))
-
-# 2. Программа находит сумму чисел от N до M, включая N и M, где N и M вводятся через input()
-
-# number_N = int(input("Введите целое число N: "))
-# number_M = int(input("Введите целое число M: "))
-# sum_numbers = 0
-#
-# if number_N < number_M:
-#     while number_N <= number_M:
-#         sum_numbers += number_N
-#         number_N += 1
-#     print("Сумма чисел от N до M включительно: ", sum_numbers)
-# else:
-#     while number_M <= number_N:
-#         sum_numbers += number_M
-#         number_M += 1
-#     print("Сумма чисел от N до M включительно: ", sum_numbers)
+number_N = -10
+number_M = 7
 
 
-# 3. Найти сумму нечётных чисел от N до M, включая N и M, где N и M вводятся через input()
+def number_operation_with_zero(n, m):
+    result = 1
+    while n <= m:
+        result *= n
+        n += 1
+    return result
 
-# number_N = int(input("Введите целое число N: "))
-# number_M = int(input("Введите целое число M: "))
-# sum_numbers = 0
-#
-# if number_N < number_M:
-#     while number_N <= number_M:
-#         if (number_N % 2) != 0:
-#             sum_numbers += number_N
-#         number_N += 1
-#     print("Сумма нечетных чисел от N до M включительно: ", sum_numbers)
-# else:
-#     while number_M <= number_N:
-#         if (number_M % 2) != 0:
-#             sum_numbers += number_M
-#         number_M += 1
-#     print("Сумма нечетных чисел от N до M включительно: ", sum_numbers)
 
-# 4. Найти количество нечётных чисел в списке
+def number_operation_without_zero(n, m):
+    result = 1
+    while n <= m:
+        if n == 0:
+            n += 1
+        else:
+            result *= n
+            n += 1
+    return result
 
-# list_numbers = range(0, 20, 1)
-# print(list(list_numbers))
-# sum_numbers = 0
-#
-# for number in list_numbers:
-#     if (number % 2) != 0:
-#         sum_numbers += number
-#
-# print("Сумма нечетных чисел в списке: ", sum_numbers)
 
-# 5. Вывести первые 12 степеней числа 2
+def print_result_with_zero():
+    if number_N < number_M:
+        print(f"Произведение чисел от {number_N} до {number_M} включительно (включая ноль): "
+              f"{number_operation_with_zero(number_N, number_M)}")
+    else:
+        print(f"Произведение чисел от {number_M} до {number_N} включительно: "
+              f"{number_operation_with_zero(number_M, number_N)}")
 
-# count = 1
-# number = 2
-# degree = 12
-# while count <= degree:
-#     print(f"{number} в cтепени {count}: {pow(number,count)}")
-#     count +=1
+def print_result_without_zero():
+    if number_N < number_M:
+        print(f"Произведение чисел от {number_N} до {number_M} включительно: "
+              f"{number_operation_without_zero(number_N, number_M)}")
+    else:
+        print(f"Произведение чисел от {number_M} до {number_N} включительно: "
+              f"{number_operation_without_zero(number_M, number_N)}")
+
+
+temp = int(input("Учитывать число ноль в диапазоне чистел? (0 - да, 1 - нет): "))
+
+if temp == 0:
+    print_result_with_zero()
+elif temp == 1:
+    print_result_without_zero()
+else:
+    print(f"Введен некорректный символ.")
